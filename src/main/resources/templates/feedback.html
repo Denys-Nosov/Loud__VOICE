@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Зворотній зв'язок</title>
+    <link rel="stylesheet" th:href="@{/css/styleFeedback.css}">
+    <link rel="shortcut icon" href="/photos/icon.png">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+    <meta name="keywords" content="Loud voice, voice, song, лауд войс, школа вокала, школа вокалу, loud voice, LOUD VOICE,"/>
+    <meta name="description" content="LOUD VOICE – це вокальний простір, в якому ти можеш бути собою!
+                    Якщо ви тільки починаєте пірнати у світ вокалу – я з величезною підтримкою допоможу вам зробити перші кроки.
+                    На заняттях ви навчитесь усім важливим вокальним азам,
+                    пізнаєте свій голос, дізнаєтесь анатомічні властивості голосового апарату, про техніки та прийоми естрадного вокалу,
+                    про вокальні прикраси, почнете використовувати усі набутті знання і навички на практиці."/>
+
+</head>
+<body>
+<div class="wrap">
+    <header th:insert="~{fragment/header::header}"></header>
+
+    <div id="backgr">
+        <div id="menu">Розділи<hr/></div>
+        <div id="menuHref">
+            <a th:href="@{/about}">Про мене</a>
+            <a th:href="@{/feedback/feedback-form}">Зворотній зв'язок</a>
+            <a href="/login">Вхід</a>
+            <a th:href="@{/registration/registration-form}">Реєстрація</a>
+        </div>
+        <div class="mainp">
+            <div class="alarm" >
+                <div class="alarm-info" th:if="${param.success}" >
+                    Відправлено , очікуйте на відповідь на вашу пошту ;)
+                </div>
+            </div>
+        </div>
+
+        <div id="wrapper">
+            <div id="articles">
+                <form th:action="@{/feedback/feedback-form}" method="post">
+                    <label >Тема повідомлення</label>
+                    <input type="text" id="about" name="about" required autofocus="autofocus"  placeholder="Тема повідомлення"/>
+                    <label >Email</label>
+                    <input type="email" id="email" name="email" required autofocus="autofocus"  placeholder="exemple@gmail.com"/>
+                    <label >Введіть ваше ім'я</label>
+                    <input type="text"  id="name" name="name" required autofocus="autofocus" placeholder="Введіть ваше ім'я"/>
+                    <label >Введіть повідомлення</label>
+                    <textarea id="message" name="message" required autofocus="autofocus"  placeholder="Введіть повідомлення"></textarea>
+                    <input type="submit" value="Відправити" id="send" name="send"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="~{fragment/footerMini::footerMini}"></div>
+</body>
+<script>
+    const menuHamburger = document.querySelector(".menu-hamburger")
+    const navLinks = document.querySelector(".nav-links")
+
+    menuHamburger.addEventListener('click',()=>{
+        navLinks.classList.toggle('mobile-menu')
+    })
+</script>
+</html>
+

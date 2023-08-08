@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title> Мій кабінет </title>
+  <link rel="stylesheet" th:href="@{/css/styleUsers.css}">
+  <link rel="shortcut icon" href="/photos/icon.png">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+  <meta name="keywords" content="Loud voice, voice, song, лауд войс, школа вокала, школа вокалу, loud voice, LOUD VOICE,"/>
+  <meta name="description" content="LOUD VOICE – це вокальний простір, в якому ти можеш бути собою!
+                    Якщо ви тільки починаєте пірнати у світ вокалу – я з величезною підтримкою допоможу вам зробити перші кроки.
+                    На заняттях ви навчитесь усім важливим вокальним азам,
+                    пізнаєте свій голос, дізнаєтесь анатомічні властивості голосового апарату, про техніки та прийоми естрадного вокалу,
+                    про вокальні прикраси, почнете використовувати усі набутті знання і навички на практиці."/>
+</head>
+<body>
+<div class="wrap">
+  <header th:insert="~{fragment/header::header}"></header>
+
+  <div id="menu">Розділи<hr/></div>
+  <div id="menuHref">
+    <a th:href="@{/about}">Про мене</a>
+    <a th:href="@{/feedback/feedback-form}">Зворотній зв'язок</a>
+    <a href="/login">Вхід</a>
+    <a href="#" th:href="@{/registration/registration-form}">Реєстрація</a>
+  </div>
+  <div class="mainp">
+    <div class="alarm" >
+      <div class="alarm-info" th:if="${param.update_success}" >
+        Час успішно записано.
+      </div>
+      <div class="alarm-info" th:if="${param.delete_success}" >
+        Користувача успішно видалено.
+      </div>
+    </div>
+  </div>
+  <div class="mainp">
+    <div class="maino" th:switch="${TIME}">
+      <h2 th:case="null">Немає часу для відображення</h2>
+      <div th:case="*">
+        <h2>Мої заняття</h2>
+        <table >
+          <thead>
+          <tr>
+            <th scope="col">Число</th>
+            <th scope="col">Час</th>
+            <th colspan="1">Дії</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="Time : ${TIME}">
+            <td th:text="${#dates.format(Time.dateIn, 'dd-MM-yyyy')}"></td>
+            <td th:text="${Time.timeIn}"></td>
+            <td><a th:href="@{/user/Del-time/{id}(id=${Time.id})}">Видалити</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="mainp" >
+    <div class="maino" th:switch="${TimeL}">
+      <h2 th:case="null">Немає часу для відображення</h2>
+      <div th:case="*">
+          <h2>Запис на заняття</h2>
+          <table >
+            <thead>
+            <tr>
+              <th scope="col">Число</th>
+              <th scope="col">Час</th>
+              <th colspan="1">Дії</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr th:each="time : ${TimeL}">
+                <td th:text="${#dates.format(time.dateIn, 'E, dd-MM-yyyy')}"></td>
+                <td th:text="${time.timeIn}"></td>
+                <td><a th:href="@{/user/add-time/{id}(id=${time.id})}">Записатись</a></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div th:insert="~{fragment/footerMini::footerMini}"></div>
+</body>
+<script>
+  const menuHamburger = document.querySelector(".menu-hamburger")
+  const navLinks = document.querySelector(".nav-links")
+
+  menuHamburger.addEventListener('click',()=>{
+    navLinks.classList.toggle('mobile-menu')
+  })
+</script>
+</html>

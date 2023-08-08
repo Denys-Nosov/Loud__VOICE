@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+  <meta charset="UTF-8">
+
+  <title>LOUD VOICE</title>
+
+  <link rel="stylesheet" th:href="@{/css/styleForHome.css}">
+  <link rel="shortcut icon" href="/photos/icon.png">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+  <meta name="keywords" content="Loud voice, voice, song, лауд войс, школа вокала, школа вокалу, loud voice, LOUD VOICE,"/>
+  <meta name="description" content="LOUD VOICE – це вокальний простір, в якому ти можеш бути собою!
+                    Якщо ви тільки починаєте пірнати у світ вокалу – я з величезною підтримкою допоможу вам зробити перші кроки.
+                    На заняттях ви навчитесь усім важливим вокальним азам,
+                    пізнаєте свій голос, дізнаєтесь анатомічні властивості голосового апарату, про техніки та прийоми естрадного вокалу,
+                    про вокальні прикраси, почнете використовувати усі набутті знання і навички на практиці."/>
+
+</head>
+<body>
+<header th:insert="~{fragment/header::header}"></header>
+
+    <div id="menu">Розділи<hr/></div>
+    <div id="menuHref">
+      <a th:href="@{/about}">Про мене</a>
+      <a  th:href="@{/feedback/feedback-form}">Зворотній зв'язок</a>
+      <a href="/login">Вхід</a>
+      <a th:href="@{/registration/registration-form}">Реєстрація</a>
+    </div>
+
+    <div id="wrapper">
+      <div id="articles">
+        <a th:href="@{/Education}">
+          <article>
+            <img th:src="@{/photos/15.jpg}" alt="image" title="Image">
+            <h2>Навчання</h2>
+<!--            <p>Ознакомьтесь с процессом обучения.</p>-->
+          </article>
+        </a>
+        <a th:href="@{/our-Rules}">
+          <article>
+            <img th:src="@{/photos/19.jpg}"  alt="image" title="Image">
+            <h2>Правила викладача</h2>
+<!--            <p>У нас есть определенные правила </p>-->
+          </article>
+        </a>
+        <a th:href="@{/our-Students}">
+          <article>
+            <img th:src="@{/photos/23.jpg}"  alt="image" title="Image">
+            <h2>Відгуки наших учнів</h2>
+<!--            <p>Прогресс можно увидеть на видео</p>-->
+          </article>
+        </a>
+      </div>
+    </div>
+
+    <section th:insert="~{fragment/footer::footer}"></section>
+</body>
+<script>
+  const menuHamburger = document.querySelector(".menu-hamburger")
+  const navLinks = document.querySelector(".nav-links")
+
+  menuHamburger.addEventListener('click',()=>{
+    navLinks.classList.toggle('mobile-menu')
+  })
+</script>
+</html>
+
+

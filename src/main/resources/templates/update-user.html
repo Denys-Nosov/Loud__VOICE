@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+    <link rel="stylesheet" th:href="@{/css/styleLogin.css}">
+</head>
+<body>
+<section>
+    <div class="login-box">
+        <form th:action="@{/admin/update/{id}(id=${user.id})}" method="post" th:object="${user}" >
+            <h2>Редактор</h2>
+            <input type="hidden" th:field="*{id}">
+            <div class="input-box">
+                <input type="text"  id="firstName" autofocus="autofocus"
+                       placeholder="Ім'я" required name="firstName" th:field="*{firstName}" >
+            </div>
+
+
+            <div class="input-box">
+                <input type="text"  id="lastName" autofocus="autofocus"
+                       placeholder="Призвище" required name="lastName" th:field="*{lastName}" >
+            </div>
+
+            <div class="input-box">
+                <input type="text"  id="email" autofocus="autofocus"
+                       placeholder="Email" required name="email" th:field="*{email}" >
+            </div>
+            <button type="submit" id="send" name="send">Оновити користувача</button>
+            <div class="register-link">
+                <a id="home" href="/">На головну</a>
+            </div>
+        </form>
+    </div>
+</section>
+</div>
+</body>
+</html>

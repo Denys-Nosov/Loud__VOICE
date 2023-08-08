@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Навчання</title>
+    <link rel="stylesheet" th:href="@{/css/styleAbout.css}">
+    <link rel="shortcut icon" href="/photos/icon.png">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+    <meta name="keywords" content="Loud voice, voice, song, лауд войс, школа вокала, школа вокалу, loud voice, LOUD VOICE,"/>
+    <meta name="description" content="LOUD VOICE – це вокальний простір, в якому ти можеш бути собою!
+                    Якщо ви тільки починаєте пірнати у світ вокалу – я з величезною підтримкою допоможу вам зробити перші кроки.
+                    На заняттях ви навчитесь усім важливим вокальним азам,
+                    пізнаєте свій голос, дізнаєтесь анатомічні властивості голосового апарату, про техніки та прийоми естрадного вокалу,
+                    про вокальні прикраси, почнете використовувати усі набутті знання і навички на практиці."/>
+
+</head>
+<body>
+<div class="wrap">
+    <header th:insert="~{fragment/header::header}"></header>
+
+    <div id="menu">Розділи<hr/></div>
+    <div class="menuHref">
+        <a th:href="@{/about}">Про мене</a>
+        <a th:href="@{/feedback/feedback-form}">Зворотній зв'язок</a>
+        <a href="/login">Вхід</a>
+        <a href="#" th:href="@{/registration/registration-form}">Реєстрація</a>
+    </div>
+
+    <div class="menuIn">Про навчання</div>
+    <div id="wrapper">
+        <div id="articles">
+            <div id="about_us">
+                <p>
+                    Онлайн формат<br><br>
+
+                    Актуальний, зручний і ефективний формат занять, дає можливість навчатися незалежно від геолокації.
+                    Що ж саме необхідно для онлайн занять?<br>
+                    • Обрати комфортне для Вас місце де є доступ до інтернету.<br>
+                    • Два пристрої, перший гаджет для відеозв’язку у Google Meet і другий для того, аби вмикати додаткові і необхідні матеріали для заняття.<br>
+                    • Комунікація з викладачем в телеграм, виконання усіх необхідних завдань.<br>
+                    • Систематичність та регулярність занять – запорука успіху!<br>
+                    • І найголовніше – бажання!<br>
+                    <br>
+                    Офлайн формат<br>
+                    • Заняття офлайн проводяться в м. Южне, Одеської області.
+                    <br><br>
+                    Тривалість заняття для дорослих і дітей віком від 9 років – 60 хвилин, для дітей віком від 5 до 9 років – 30-45 хвилин.<br>
+                    Також є можливість придбати подарунковий сертифікат на 4, 6 або 8 занять.<br>
+                    На базі Палацу творчості дітей та юнацтва «Мрія», в м. Южне, Одеської області проводяться безкоштовні групові заняття для дітей віком від 5 до 18 років.<br>
+                    <br><br>
+                    <p id="centerp">-----Ціни-----
+                    <br><br>
+                    Разове заняття - 350 грн
+                    <br><br>
+                    Абонементи:<br>
+                    4 заняття – 1400 грн<br>
+                    6 занять – 2100 грн<br>
+                    8 занять – 2800 грн<br>
+                    </p>
+                </p>
+            </div>
+            <div class="my_photoEducation"></div>
+        </div>
+    </div>
+    <div class="menuIn"><hr/></div>
+</div>
+<div th:insert="~{fragment/footerMini::footerMini}"></div>
+</body>
+<script>
+    const menuHamburger = document.querySelector(".menu-hamburger")
+    const navLinks = document.querySelector(".nav-links")
+
+    menuHamburger.addEventListener('click',()=>{
+        navLinks.classList.toggle('mobile-menu')
+    })
+</script>
+</html>

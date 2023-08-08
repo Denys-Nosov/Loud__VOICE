@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body>
+<div>
+
+        <div>
+
+            <div th:if="${param.invalid}" >
+                <p >Invalid verification</p>
+            </div>
+
+            <div th:if="${param.expired}" >
+                <p >This verification has already expired.</p>
+            </div>
+
+        </div>
+</div>
+</body>
+</html>

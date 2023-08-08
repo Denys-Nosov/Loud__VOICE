@@ -1,0 +1,31 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<div th:fragment="header">
+  <nav class="navbar">
+    <a th:href="@{/}" class="logo">LOUD VOICE</a>
+    <div class="nav-links">
+      <ul class="links">
+        <li class="active"><a href="/">Головна</a> </li>
+        <li sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin/users}">Мій кабінет</a> </li>
+        <li sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin/addTime}">Додати час</a> </li>
+        <li sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/admin/LessonsTime}">Записані учні</a> </li>
+        <li sec:authorize="hasAuthority('STUDENT')"><a th:href="@{/user/my-page}">Мій кабінет</a> </li>
+        <li sec:authorize="hasAuthority('USER')"><a th:href="@{/user-error-page}">Мій кабінет</a> </li>
+        <li sec:authorize="!isAuthenticated()"><a th:href="@{/about}">Про мене</a> </li>
+        <li sec:authorize="!isAuthenticated()"><a th:href="@{/feedback/feedback-form}">Зворотній зв'язок</a> </li>
+        <li sec:authorize="!isAuthenticated()"><a th:href="@{/contacts}">Контакти</a> </li>
+        <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Вхід</a> </li>
+        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Вихід</a> </li>
+      </ul>
+    </div>
+    <img th:src="@{/photos/menu-btn.png}" alt="menu hamburger" class="menu-hamburger">
+  </nav>
+</div>
+<script>
+  const menuHamburger = document.querySelector(".menu-hamburger")
+  const navLinks = document.querySelector(".nav-links")
+
+  menuHamburger.addEventListener('click',()=>{
+    navLinks.classList.toggle('mobile-menu')
+  })
+</script>
